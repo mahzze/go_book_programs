@@ -10,11 +10,9 @@ import (
 	"os"
 )
 
-var pallete = []color.Color{color.Black, color.RGBA{0x45, 0xff, 0xb0, 0xff}}
-
 const (
-	green_index = 1
-	black_index = 0
+	color_index     = 1
+	black_bkg_index = 0
 )
 
 func main() {
@@ -34,11 +32,14 @@ func lissajous(out io.Writer) {
 	phase := 0.0
 	for i := 0; i < nframes; i++ {
 		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
-		img := image.NewPaletted(rect, pallete)
+		img := image.NewPaletted(rect, []color.Color{
+			color.Black,
+			color.RGBA{uint8(rand.Int()), uint8(rand.Int()), uint8(rand.Int()), 255},
+		})
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			img.SetColorIndex(size+int(x*size+.5), size+int(y*size+.5), green_index)
+			img.SetColorIndex(size+int(x*size+.5), size+int(y*size+.5), color_index)
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
