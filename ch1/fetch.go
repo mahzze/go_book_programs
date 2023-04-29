@@ -19,6 +19,7 @@ func main() {
 			os.Exit(1)
 		}
 		_, err = io.Copy(os.Stdout, response.Body)
+		fmt.Fprintf(os.Stdout, "\n --------------------------------------------------------------\n %s HTTP STATUS: %s\n", url, response.Status)
 		response.Body.Close()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: reading %s: %v \n", url, err)
