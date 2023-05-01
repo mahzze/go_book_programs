@@ -25,6 +25,6 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	for key, value := range request.Form {
-		fmt.Fprint(writer, "Form[%q] = %q\n", key, value)
+		fmt.Fprintf(writer, "Form[%q] = %q\n", key, value)
 	}
 }
