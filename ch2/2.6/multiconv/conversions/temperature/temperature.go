@@ -4,11 +4,11 @@ type Celsius float32
 type Fahrenheit float32
 type Kelvin float32
 
-func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
-func CToK(c Celsius) Kelvin     { return Kelvin(c + 273.15) }
+func (c Celsius) CToF() Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+func (c Celsius) CToK() Kelvin     { return Kelvin(c + 273.15) }
 
-func FToC(f Fahrenheit) Celsius { return Celsius((f - 32) * 5 / 9) }
-func FToK(f Fahrenheit) Kelvin  { return Kelvin((f-32)*5/9 + 273.15) }
+func (f Fahrenheit) FToC() Celsius { return Celsius((f - 32) * 5 / 9) }
+func (f Fahrenheit) FToK() Kelvin  { return Kelvin((f-32)*5/9 + 273.15) }
 
-func KToC(k Kelvin) Celsius    { return Celsius(k - 273.15) }
-func KToF(k Kelvin) Fahrenheit { return Fahrenheit((k-273.15)*5/9 + 32) }
+func (k Kelvin) KToC() Celsius    { return Celsius(k - 273.15) }
+func (k Kelvin) KToF() Fahrenheit { return Fahrenheit((k-273.15)*5/9 + 32) }
