@@ -77,51 +77,117 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "mm":
 		mm := distance.Milimeter(value)
-		fmt.Printf(`input:%.2f milimeters, measure of distance
+		fmt.Printf(`input:%g milimeters, measure of distance
+------ Metric Scale -------
 %g cm
 %g m
 %g km
+----- Imperial Scale ------
+%g in
+%g ft
+%g yd
 %g mi
-`, mm, mm.MmToCm(), mm.MmToM(), mm.MmToKm(), mm.MmToMi())
+`, mm, mm.MmToCm(), mm.MmToM(), mm.MmToKm(), mm.MmToIn(), mm.MmToFt(), mm.MmToYd(), mm.MmToMi())
 
 	case "cm":
 		cm := distance.Centimeter(value)
-		fmt.Printf(`input:%.2f centimeters, measure of distance
+		fmt.Printf(`input:%g centimeters, measure of distance
+------ Metric Scale -------
 %g mm
 %g m
 %g km
+----- Imperial Scale ------
+%g in
+%g ft
+%g yd
 %g mi
-`, cm, cm.CmToMm(), cm.CmToM(), cm.CmToKm(), cm.CmToMi())
+`, cm, cm.CmToMm(), cm.CmToM(), cm.CmToKm(), cm.CmToIn(), cm.CmToFt(), cm.CmToYd(), cm.CmToMi())
 
 	case "m":
 		m := distance.Meter(value)
-		fmt.Printf(`input:%.2f meters, measure of distance
+		fmt.Printf(`input:%g meters, measure of distance
+------ Metric Scale -------
 %g mm
 %g cm
 %g km
+----- Imperial Scale ------
+%g in
+%g ft
+%g yd
 %g mi
-`, m, m.MToMm(), m.MToCm(), m.MToKm(), m.MToMi())
+`, m, m.MToMm(), m.MToCm(), m.MToKm(), m.MToIn(), m.MToFt(), m.MToYd(), m.MToMi())
 
 	case "km":
 		km := distance.Kilometer(value)
-		fmt.Printf(`input:%.2f kilometers, measure of distance
+		fmt.Printf(`input:%g kilometers, measure of distance
+------ Metric Scale -------
 %g mm
 %g cm
 %g m
+----- Imperial Scale ------
+%g in
+%g ft
+%g yd
 %g mi
-`, km, km.KmToMm(), km.KmToCm(), km.KmToM(), km.KmToMi())
+`, km, km.KmToMm(), km.KmToCm(), km.KmToM(), km.KmToIn(), km.KmToFt(), km.KmToYd(), km.KmToMi())
 
 	case "mi":
 		mi := distance.Mile(value)
-		fmt.Printf(`input:%.2f miles, measure of distance
+		fmt.Printf(`input:%g miles, measure of distance
+------ Metric Scale -------
 %g mm
 %g cm
 %g m
+%g km
+----- Imperial Scale ------
+%g in
+%g ft
+%g yd
+`, mi, mi.MiToMm(), mi.MiToCm(), mi.MiToM(), mi.MiToKm(), mi.MiToIn(), mi.MiToFt(), mi.MiToYd())
+
+	case "in":
+		in := distance.Inches(value)
+		fmt.Printf(`input:%g inches, measure of distance
+------ Metric Scale -------
+%g mm
+%g cm
+%g m
+%g km
+----- Imperial Scale ------
+%g ft
+%g yd
 %g mi
-`, mi, mi.MiToMm(), mi.MiToCm(), mi.MiToM(), mi.MiToKm())
+`, in, in.InToMm(), in.InToCm(), in.InToM(), in.InToKm(), in.InToFt(), in.InToYd(), in.InToMi())
+
+	case "ft":
+		ft := distance.Feet(value)
+		fmt.Printf(`input:%g feet, measure of distance
+------ Metric Scale -------
+%g mm
+%g cm
+%g m
+%g km
+----- Imperial Scale ------
+%g in
+%g yd
+%g mi 
+`, ft, ft.FtToMm(), ft.FtToCm(), ft.FtToM(), ft.FtToKm(), ft.FtToIn(), ft.FtToYd(), ft.FtToMi())
+
+	case "yd":
+		yd := distance.Yard(value)
+		fmt.Printf(`input:%g yards, measure of distance
+------ Metric Scale -------
+%g mm
+%g cm
+%g m
+%g km
+----- Imperial Scale ------
+%g in
+%g ft
+%g mi 
+`, yd, yd.YdToMm(), yd.YdToCm(), yd.YdToM(), yd.YdToKm(), yd.YdToIn(), yd.YdToFt(), yd.YdToMi())
 
 	default:
 		fmt.Printf("%s is not a valid unit, to see the valid options run the program with the -h or \n--help flags, or run it with no flags and no arguments\n", unit)
 	}
-
 }
