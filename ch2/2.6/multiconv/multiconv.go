@@ -9,6 +9,8 @@ import (
 	"strings"
 
 	"github.com/mahzze/multiconv/conversions/distance"
+	"github.com/mahzze/multiconv/conversions/temperature"
+	"github.com/mahzze/multiconv/conversions/weight"
 )
 
 func main() {
@@ -77,7 +79,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "mm":
 		mm := distance.Milimeter(value)
-		fmt.Printf(`input:%g milimeters, measure of distance
+		fmt.Printf(`input: %g milimeters, measure of distance
 ------ Metric Scale -------
 %g cm
 %g m
@@ -91,7 +93,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "cm":
 		cm := distance.Centimeter(value)
-		fmt.Printf(`input:%g centimeters, measure of distance
+		fmt.Printf(`input: %g centimeters, measure of distance
 ------ Metric Scale -------
 %g mm
 %g m
@@ -105,7 +107,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "m":
 		m := distance.Meter(value)
-		fmt.Printf(`input:%g meters, measure of distance
+		fmt.Printf(`input: %g meters, measure of distance
 ------ Metric Scale -------
 %g mm
 %g cm
@@ -119,7 +121,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "km":
 		km := distance.Kilometer(value)
-		fmt.Printf(`input:%g kilometers, measure of distance
+		fmt.Printf(`input: %g kilometers, measure of distance
 ------ Metric Scale -------
 %g mm
 %g cm
@@ -133,7 +135,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "mi":
 		mi := distance.Mile(value)
-		fmt.Printf(`input:%g miles, measure of distance
+		fmt.Printf(`input: %g miles, measure of distance
 ------ Metric Scale -------
 %g mm
 %g cm
@@ -147,7 +149,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "in":
 		in := distance.Inches(value)
-		fmt.Printf(`input:%g inches, measure of distance
+		fmt.Printf(`input: %g inches, measure of distance
 ------ Metric Scale -------
 %g mm
 %g cm
@@ -161,7 +163,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "ft":
 		ft := distance.Feet(value)
-		fmt.Printf(`input:%g feet, measure of distance
+		fmt.Printf(`input: %g feet, measure of distance
 ------ Metric Scale -------
 %g mm
 %g cm
@@ -175,7 +177,7 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 
 	case "yd":
 		yd := distance.Yard(value)
-		fmt.Printf(`input:%g yards, measure of distance
+		fmt.Printf(`input: %g yards, measure of distance
 ------ Metric Scale -------
 %g mm
 %g cm
@@ -186,6 +188,81 @@ value converted in it's categories. e.g 'multiconv -273.15 -u=c' will return:
 %g ft
 %g mi 
 `, yd, yd.YdToMm(), yd.YdToCm(), yd.YdToM(), yd.YdToKm(), yd.YdToIn(), yd.YdToFt(), yd.YdToMi())
+
+	case "mg":
+		mg := weight.Miligram(value)
+		fmt.Printf(`input: %g miligrams, measure of weight
+------ Metric Scale -------
+%g g
+%g kg
+%g t
+----- Imperial Scale ------
+%g lb
+`, mg, mg.MgToG(), mg.MgToKg(), mg.MgToT(), mg.MgToLb())
+
+	case "g":
+		g := weight.Gram(value)
+		fmt.Printf(`input: %g grams, measure of weight
+------ Metric Scale -------
+%g mg
+%g kg
+%g t
+----- Imperial Scale ------
+%g lb
+`, g, g.GToMg(), g.GToKg(), g.GToT(), g.GToLb())
+
+	case "kg":
+		kg := weight.Kilo(value)
+		fmt.Printf(`input: %g kilograms, measure of weight
+------ Metric Scale -------
+%g mg
+%g g
+%g t
+----- Imperial Scale ------
+%g lb
+`, kg, kg.KgToMg(), kg.KgToG(), kg.KgToT(), kg.KgToLb())
+
+	case "t":
+		t := weight.Ton(value)
+		fmt.Printf(`input: %g tons, measure of weight
+------ Metric Scale -------
+%g mg
+%g g
+%g kg
+----- Imperial Scale ------
+%g lb
+`, t, t.TToMg(), t.TToG(), t.TToKg(), t.TToLb())
+
+	case "lb":
+		lb := weight.Pound(value)
+		fmt.Printf(`input: %g pounds, measure of weight
+------ Metric Scale -------
+%g mg
+%g g
+%g kg
+%g t
+`, lb, lb.LbToMg(), lb.LbToG(), lb.LbToKg(), lb.LbToT())
+
+	case "c":
+		c := temperature.Celsius(value)
+		fmt.Printf(`input: %g ºCelsius, measure of heat
+%g ºFahrenheit
+%g Kelvin
+`, c, c.CToF(), c.CToK())
+
+	case "f":
+		f := temperature.Fahrenheit(value)
+		fmt.Printf(`input: %g ºFahrenheit, measure of heat
+%g ºCelsius
+%g Kelvin
+`, f, f.FToC(), f.FToK())
+
+	case "k":
+		k := temperature.Kelvin(value)
+		fmt.Printf(`input: %g Kelvin, measure of heat
+%g ºCelsius
+%g ºFahrenheit
+`, k, k.KToC(), k.KToF())
 
 	default:
 		fmt.Printf("%s is not a valid unit, to see the valid options run the program with the -h or \n--help flags, or run it with no flags and no arguments\n", unit)
