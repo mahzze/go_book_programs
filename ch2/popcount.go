@@ -5,6 +5,8 @@ var pc [256]byte
 func init() {
 	for i := range pc {
 		// & is a bitwise operator. AKA something I currently know nothing about
+		// Due to that, I won't do anything requiring bitwise operations in chapter 2
+		// If it appears again, I'll learn it and do it.
 		pc[i] = pc[i/2] + byte(i&1)
 	}
 }
