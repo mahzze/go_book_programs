@@ -7,6 +7,11 @@ This repo was made to contain solutions for the exercises from the book `The go 
 As such, this repository contains the solutions to (most) exercises from the book, and
 will be updated as I continue to read it and complete more exercises.
 
+<<<<<<< Updated upstream
+=======
+PS: I will not put every file on it's own package, instead, I'll only use packages when needed, e.g. at chapter 2, section 6, with the package tempconv. In cases such as that, I will put the related files in a folder, with a module named after the section.
+
+>>>>>>> Stashed changes
 ### If you don't have the book
 * If you want a physical copy, go to the official website [gopl.io](http://gopl.io).
 
